@@ -8,26 +8,17 @@ public class Student {
     	private String name;
     
 	//turn this into an array///////////////
-    	private int mark1, mark2, mark3; 
-
-
- //constructor methods - 3 ways you can make a student
-
-      public Student(){
-		this("", 0, 0, 0);
-	}
+    	private int[] marks = new int[3];
 
 	//Additonal Constructor
-	public Student(String nm, int t1, int t2, int t3) {
+	public Student(String nm, int m[]) {
 		name = nm;
-		mark1 = t1;
-		mark2 = t2;
-		mark3 = t3;
+		marks = m;
 	}
 
 	//Another constructor
 	public Student(Student s) {
-		this(s.name, s.mark1, s.mark2, s.mark3);
+		this(s.name, s.marks);
 	}
 
     /*
@@ -41,45 +32,30 @@ public class Student {
     }
 
     public void setMark(int whichmark, int number){
-    	if (whichmark == 1) {
-    		mark1 = number;
-    	} else if (whichmark == 2) {
-    		mark2 = number;
-    	} else{
-
-    		mark3 = number;
-    	}
+    	marks[number - 1] = whichmark;
     }
 
     public int getAverage() {
-    	int average = (mark1 + mark2 + mark3) / 3;
+    	int average = (marks[1] + marks[2] + marks[3]) / 3;
     	return average;
     }
 
 
     public int getMark(int whichmark) {
-	if (whichmark == 1) return mark1;
-	else if (whichmark ==2) return mark2;
-	else return mark3;
+	return marks[whichmark-1];
     }
 
     public int getHighscore() {
-    	if (mark1 > mark2 && mark1 > mark3) {
-    		return mark1;
-    	}
-    	else if (mark2 > mark1 && mark2 > mark3){
-    		return mark2;
-
-    	} else {
-    		return mark3;
-    	}
+    	int high = marks[0];
+        high = Math.max(marks[2],high);
+        return high;
     }
 
     public String toString() {
     	String result = "Name: " + name;
-    	result += "\nMark 1:\t" + mark1;
-    	result += "\nMark 2:\t" + mark2;
-    	result += "\nMark 3:\t" + mark3;
+    	result += "\nMark 1:\t" + marks[0];
+    	result += "\nMark 2:\t" + marks[1];
+    	result += "\nMark 3:\t" + marks[2];
     	result += "\n~~~~~~~~~~~~~~~~~~";
     	result += "\nAverage:\t" + getAverage();
     	return result;
@@ -96,7 +72,7 @@ public class Student {
     	if (name.equals("")) 
     		message += "\nName is required\nPlease re-enter all data";
     	
-	if (mark1 < 0 || mark1 > 100 || mark2 < 0 || mark2 > 100 || mark3 < 0 || mark3 > 100) 
+	if (marks[0] < 0 || marks[0] > 100 ||marks[1] < 0 || marks[1] > 100 ||marks[2] < 0 || marks[2] > 100 ) 
     		message += "\nAt least one mark is out of range, please re-enter all data";
 	
 	return message;
