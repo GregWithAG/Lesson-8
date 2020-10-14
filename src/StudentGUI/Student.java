@@ -36,7 +36,7 @@ public class Student {
     }
 
     public int getAverage() {
-    	int average = (marks[1] + marks[2] + marks[3]) / 3;
+    	int average = (marks[0] + marks[1] + marks[2]) / 3;
     	return average;
     }
 
@@ -64,6 +64,8 @@ public class Student {
     public String getName() {
     	return name;
     }
+    
+    
 
     //validate data
     public String validateData() {
