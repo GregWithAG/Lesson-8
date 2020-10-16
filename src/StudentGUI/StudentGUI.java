@@ -2,6 +2,7 @@ package StudentGUI;
 import javax.swing.JOptionPane;
 
 public class StudentGUI extends javax.swing.JFrame {
+    
     Student s[];
     int size, CurrentStudent;
     public StudentGUI() {
@@ -32,6 +33,7 @@ public class StudentGUI extends javax.swing.JFrame {
         lblCount.setText("" + size);
         lblCount.setText("" + CurrentStudent);
     }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -228,7 +230,8 @@ public class StudentGUI extends javax.swing.JFrame {
         
         String em = temp.validateData();
         
-        if(em==null){
+        if(em==null)
+        {
             s[size]=temp;
             CurrentStudent=size;
             size++;

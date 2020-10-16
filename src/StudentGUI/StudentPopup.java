@@ -14,6 +14,7 @@ public class StudentPopup extends javax.swing.JDialog {
     /**
      * Creates new form StudentPopup
      */
+    Student temp;
     public StudentPopup(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -48,12 +49,10 @@ public class StudentPopup extends javax.swing.JDialog {
 
         lblMarks.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
                 {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3"
+                "Mark 1", "Mark 2", "Mark 3"
             }
         ));
         jScrollPane2.setViewportView(lblMarks);
@@ -92,8 +91,8 @@ public class StudentPopup extends javax.swing.JDialog {
                     .addComponent(jLabel1)
                     .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(OkBtn)
                     .addComponent(CancelBtn))
@@ -112,6 +111,7 @@ public class StudentPopup extends javax.swing.JDialog {
             marks[2] = Integer.parseInt(lblMarks.getValueAt(0,2).toString());
         }catch(Exception e){
             JOptionPane.showMessageDialog(this,"Fill out all fields\n(press <enter> on each mark)");
+            return;
         }
         temp = new Student(name,marks);
         this.dispose();
@@ -121,6 +121,10 @@ public class StudentPopup extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_CancelBtnActionPerformed
 
+    public Student getStudent(){
+        return temp;
+    }
+    
     /**
      * @param args the command line arguments
      */

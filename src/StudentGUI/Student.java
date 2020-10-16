@@ -26,7 +26,6 @@ public class Student {
     these give our object more abilities
     */
 
-
     public void setName(String nm) {
     	name = nm;
     }
