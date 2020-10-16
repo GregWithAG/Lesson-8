@@ -51,8 +51,8 @@ public class StudentGUI extends javax.swing.JFrame {
         lblAverage = new javax.swing.JLabel();
         BackBtn = new javax.swing.JButton();
         ForwardBtn = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        BtnLast = new javax.swing.JButton();
+        BtnFirst = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         lblCount = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -81,6 +81,11 @@ public class StudentGUI extends javax.swing.JFrame {
         jLabel4.setText("Mark 3");
 
         ModifyBtn.setText("Modify");
+        ModifyBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModifyBtnActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Average:");
 
@@ -100,9 +105,19 @@ public class StudentGUI extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText(">>");
+        BtnLast.setText(">>");
+        BtnLast.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnLastActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("<<");
+        BtnFirst.setText("<<");
+        BtnFirst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnFirstActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Current Index");
 
@@ -124,7 +139,7 @@ public class StudentGUI extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(25, 25, 25)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton4)
+                                    .addComponent(BtnFirst)
                                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -157,7 +172,7 @@ public class StudentGUI extends javax.swing.JFrame {
                                     .addComponent(txtMark2))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton3)
+                            .addComponent(BtnLast)
                             .addComponent(ModifyBtn)
                             .addComponent(AddBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblIndex, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -202,8 +217,8 @@ public class StudentGUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BackBtn)
                     .addComponent(ForwardBtn)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(BtnLast)
+                    .addComponent(BtnFirst))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -255,6 +270,42 @@ public class StudentGUI extends javax.swing.JFrame {
             showStudent();
         }
     }//GEN-LAST:event_ForwardBtnActionPerformed
+    
+    
+    
+    private void ModifyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModifyBtnActionPerformed
+        ModifyWindow mw = new ModifyWindow(this,true);
+        mw.setModal(true);
+        mw.setLocationRelativeTo(this);
+        mw.setVisible(true);
+        Student temp = mw.getStudent();
+        
+        String em = temp.validateData();
+        
+        if(em==null)
+        {
+            s[size]=temp;
+            showStudent();
+        }
+        else{
+            JOptionPane.showMessageDialog(this, em);
+        }
+    }//GEN-LAST:event_ModifyBtnActionPerformed
+
+    private void BtnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnFirstActionPerformed
+        if(CurrentStudent > 0){
+            CurrentStudent = 0;
+            showStudent();
+        }
+        
+    }//GEN-LAST:event_BtnFirstActionPerformed
+
+    private void BtnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLastActionPerformed
+        if(CurrentStudent < size - 1 && CurrentStudent>-1){
+            CurrentStudent = size - 1;
+            showStudent();
+        }
+    }//GEN-LAST:event_BtnLastActionPerformed
 
     
     public static void main(String args[]) {
@@ -292,10 +343,10 @@ public class StudentGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddBtn;
     private javax.swing.JButton BackBtn;
+    private javax.swing.JButton BtnFirst;
+    private javax.swing.JButton BtnLast;
     private javax.swing.JButton ForwardBtn;
     private javax.swing.JButton ModifyBtn;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
