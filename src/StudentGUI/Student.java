@@ -38,6 +38,8 @@ public class Student {
     	int average = (marks[0] + marks[1] + marks[2]) / 3;
     	return average;
     }
+    
+    
 
 
     public int getMark(int whichmark) {

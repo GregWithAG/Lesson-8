@@ -89,10 +89,17 @@ public class ModifyWindow extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
     
     public void setForm(Student s){
-        txtName.setText(s.getName)
+        txtName.setText(s.getName());
+        for (int i = 0; i < 3; i++) {
+            lblMarks.setValueAt(s.getMark(i+1), 0, i);
+        }
     }
     
     private void CancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelBtnActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_CancelBtnActionPerformed
+
+    private void OkBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkBtnActionPerformed
         int marks[] = new int[3];
         String name = txtName.getText();
         try{
@@ -104,10 +111,6 @@ public class ModifyWindow extends javax.swing.JDialog {
             return;
         }
         temp = new Student(name,marks);
-        this.dispose();
-    }//GEN-LAST:event_CancelBtnActionPerformed
-
-    private void OkBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkBtnActionPerformed
         this.dispose();
     }//GEN-LAST:event_OkBtnActionPerformed
     

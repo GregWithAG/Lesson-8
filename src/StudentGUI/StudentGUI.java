@@ -275,6 +275,7 @@ public class StudentGUI extends javax.swing.JFrame {
     
     private void ModifyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModifyBtnActionPerformed
         ModifyWindow mw = new ModifyWindow(this,true);
+        mw.setForm(s[CurrentStudent]);
         mw.setModal(true);
         mw.setLocationRelativeTo(this);
         mw.setVisible(true);
@@ -285,6 +286,7 @@ public class StudentGUI extends javax.swing.JFrame {
         if(em==null)
         {
             s[size]=temp;
+            CurrentStudent=size;
             showStudent();
         }
         else{
